@@ -54,11 +54,17 @@
       mysql_select_db("florycanto", $link);
 
       $result = mysql_query("SELECT * FROM coleccion WHERE id=$claveColeccion", $link);
-      $num_rows = mysql_num_rows($result);
+      $coleccion = mysql_fetch_array($result);
+
+      $nombre = $coleccion['nombre'];
+      $descripcion = $coleccion['descripcion'];
 
       echo'<div id="feature" class="grid_12">
-        <h3><p> Productos Colecci&oacute;n: '.$claveColeccion.' </p></h3>
+        <h3><p> Productos Colecci&oacute;n: '.$nombre.' </p></h3>
+        <p>'.$descripcion.'</p>
       </div>';
+
+      $num_rows = mysql_num_rows($result);
 
       while($row = mysql_fetch_array($result)){
 
