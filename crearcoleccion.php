@@ -26,7 +26,7 @@ if (isset($_POST['submitColeccion'])) {
 	$_SESSION['nombre'] = $nombre;
 	$_SESSION['descripcion'] = $descripcion;
 	$_SESSION['file'] = $file; 
-	header("Location: index.html");
+	header("Location: index.php");
 
 	$link = mysql_connect("localhost", "root", "");
 	mysql_select_db("florycanto", $link);
