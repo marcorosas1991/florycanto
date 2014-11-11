@@ -72,7 +72,7 @@
 
         echo '<a href="verproducto.php?claveColeccion=' . $row['idProducto'] . '"><div class="article grid_4">
         <h4><p>' . $row['idProducto'] .'</p></h4>
-        <img id="small" src="'.$row['imagen'].'" class="small" alt="Event" /><br><br>
+        <img src="'.$row['imagen'].'" style="width: 174px; height: 143px;" /><br><br>
         <a href="editarproucto.php?claveColeccion=' . $row['idProducto'] . '"><img id="left_image" src="images/Edit.png"></a>
         </div></a>';
 
