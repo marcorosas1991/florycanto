@@ -16,7 +16,7 @@
     $num_rows = mysql_num_rows($result);
 
     if($num_rows > 0){
-      //session_start();
+      session_start();
       $_SESSION[usuario]="admin";
       header('Location:index.html');
     }else{
