@@ -1,12 +1,12 @@
 <style>
-    
+
 .boton
 {
     margin-top: 10px;
     font-size: 1em !important;
     font-family: 'Ubuntu Mono' !important;
     border-radius: .3em;
-    
+
     letter-spacing:2px;
     width: 25%;
     height: 30px;
@@ -17,7 +17,7 @@
     background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent),
                       linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent),
                       linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
-                      linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);    
+                      linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
 }
 </style>
 

@@ -60,10 +60,10 @@
 
 			while($row = mysql_fetch_array($result)){
 
-				echo '<a href=""><div class="article grid_4">
+				echo '<a href="vercoleccion.php?claveColeccion=' . $row[$id] . '"><div class="article grid_4">
 				<h4><p>' . $row['nombre'] .'</p></h4>
 				<img src="'.$row['logo'].'" alt="Event" /><br><br>
-				<a href="editarColeccion.php"><img id="left_image" src="images/Edit.png"></a>
+				<a href="editarcoleccion.php?claveColeccion=' . $row[$id] . '"><img id="left_image" src="images/Edit.png"></a>
 				</div></a>';
 
 			}
