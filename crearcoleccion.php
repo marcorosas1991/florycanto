@@ -5,7 +5,7 @@ session_start();
 if(empty($_SESSION['username'])) {
 	session_start();
 	$_SESSION['loginStatus'] = "necesitas identificarte!";
-	header("Location: index.php");
+	header("Location: login.php");
 }
 
 if (isset($_POST['closeSession'])) {
@@ -28,7 +28,7 @@ if (isset($_POST['submitEvento'])) {
 	$_SESSION['logo'] = $logo; 
 	header("Location: index.php");
 
-	$link = mysql_connect("localhost", "adminflorycanto", "florycanto");
+	$link = mysql_connect("localhost", "root", "");
 	mysql_select_db("florycanto", $link);
 
 	$nombre = $_SESSION['nombre'];
@@ -87,7 +87,7 @@ if (isset($_POST['submitEvento'])) {
 
 // variables de conexion
 
-$user = "adminflorycanto";
+$user = "root";
 $nombre = '';
 $lugar = '';
 $descripcion = '';
