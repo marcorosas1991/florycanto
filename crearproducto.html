@@ -29,35 +29,40 @@
         align-items: center;
         text-align: center;
         align-content: center;
+        border-radius: .3em;
         }
+        
+        fieldset{
+        color: #FFF000;
+        border-radius: .3em;
+        border-style: outset;}
             
     </style>
     
 	<body>
         
     <center><div id="feature" style="width:400px; align-self:center;">
-            <h3> Agregar nuevo producto </h3>
-
-         <br>
+        <fieldset>
+            <legend><h4>Detalles del nuevo producto</h4></legend>
             <form action="" method="post">
-                ID del producto:<br>
+                <label>ID del producto:</label><br>
                 <input type="text" name="idProducto">
                 <br>
-                Categor&iacute;a:<br>
+                <label>Categor&iacute;a:</label><br>
                 <input class="categoria1" type="text" name="categoriaTipo"><br>
-                Tamaño:<br>
+                <label>Tamaño:</label><br>
                 <input type="text" name="tamano"><br>
-                Cantidad:<br>
+                <label>Cantidad:</label><br>
                 <input type="text" name="cantidad"><br>
-                Descripci&oacute;n:<br>
+                <label>Descripci&oacute;n:</label><br>
                 <input type="text" name="descripcion"><br>
-                Costo de Producci&oacute;n:<br>
+                <label>Costo de Producci&oacute;n:</label><br>
                 <input type="text" name="costoProduccion"><br>
-                Costo de Venta:<br>
+                <label>Costo de Venta:</label><br>
                 <input type="text" name="CostoVenta"><br>
-                Colecci&oacute;n:<br>
+                <label>Colecci&oacute;n:</label><br>
                 <input type="text" name="nombrecoleccion"><br>
-                Empaque:<br>
+                <label>Empaque:</label><br>
                 <input type="text" name="nombreEmpaque"><br>
             </form>
             <form action=""
@@ -66,11 +71,15 @@
                 Seleccionar imagen del producto:<br>
                 <input type="file" name="datafile" size="40">
             </p>
-
-        </form>
-        <br><br><input  type="submit" class="boton" value="Ingresar" style="width: 300px;"></input>
+            
+            <br><br><input  type="submit" class="boton" value="Ingresar" style="width: 300px;"></input>
     </div></center>
 
+            
+            
+        
+        </fieldset>
+        
 </body>
     
 </html>
