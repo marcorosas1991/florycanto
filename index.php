@@ -60,7 +60,7 @@
 
 				echo '<a href="vercoleccion.php?claveColeccion=' . $row['id'] . '"><div class="article grid_4">
 				<h4><p>' . $row['nombre'] .'</p></h4>
-				<img src="'.$row['logo'].'" alt="Event" /><br><br>
+				<img src="'.$row['logo'].'" style="width: 174px; height: 143px;" alt="Event" /><br><br>
 				<a href="editarcoleccion.php?claveColeccion=' . $row['id'] . '"><img id="left_image" src="images/Edit.png"></a>
 				</div></a>';
 
