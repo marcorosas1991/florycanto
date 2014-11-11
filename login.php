@@ -12,7 +12,7 @@
       <span>Contrase&ntilde;a <input type="password" name="password"> </span>
       <br>
       <br>
-      <input type="submit" value="Entrar">
+      <input type="submit" value="Ingresar">
     </form>
   </body>
 </html>
