@@ -7,7 +7,10 @@ session_start();
 // 	$_SESSION['loginStatus'] = "necesitas identificarte!";
 // 	header("Location: login.php");
 // }
-
+$nombre = $_SESSION['nombre'];
+$descripcion = $_SESSION['descripcion'];
+$logo = $_SESSION['logo'];
+$estado = 0;
 if (isset($_POST['closeSession'])) {
 
 	session_unset(); 
@@ -127,7 +130,7 @@ if($_POST) {
 <html>
 
 	<head>
-		<title>Agregar Colecci&oacute;n</title>
+		<title>Editar Colecci&oacute;n</title>
 
 		<link type="text/css" rel="stylesheet" href="css/style2.css"/>
 		<style type="text/css">
@@ -199,7 +202,7 @@ if($_POST) {
 						Nombre:	
 					</div>
 					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
-						<input type="text" placeholder="nombre del evento" name="nombre"/>
+						<input type="text" placeholder=	<?php echo $_SESSION['nombre']?> name="nombre"/>
 					</div>
 				</div>
 	
