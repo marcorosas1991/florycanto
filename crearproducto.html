@@ -1,0 +1,76 @@
+<html>
+<head>
+	<link rel= "stylesheet" href= "css/960_12_col.css" />
+	<meta charset="UTF-8">
+	<title>Crear Producto</title></head>
+    
+    <style>
+			* {
+				font-family: Arial, Verdana, sans-serif;
+				color: #665544;
+				text-align: center;}
+
+			#nav, #feature, .article, #footer {
+				background-color: #efefef;
+				margin-top: 20px;
+				padding: 10px 0px 5px 0px;}
+
+			#feature, .grid_12 {
+                align-content: center;
+				height: 600px;
+                padding: 10px 0px 5px 0px;}
+
+			li {
+				display: inline;
+				padding: 5px;}
+        
+        #feature, .grid_4{
+        align-self: center;
+        align-items: center;
+        text-align: center;
+        align-content: center;
+        }
+            
+    </style>
+    
+	<body>
+        
+    <center><div id="feature" style="width:400px; align-self:center;">
+            <h3> Agregar nuevo producto </h3>
+
+         <br>
+            <form action="" method="post">
+                ID del producto:<br>
+                <input type="text" name="idProducto">
+                <br>
+                Categor&iacute;a:<br>
+                <input class="categoria1" type="text" name="categoriaTipo"><br>
+                Tamaño:<br>
+                <input type="text" name="tamano"><br>
+                Cantidad:<br>
+                <input type="text" name="cantidad"><br>
+                Descripci&oacute;n:<br>
+                <input type="text" name="descripcion"><br>
+                Costo de Producci&oacute;n:<br>
+                <input type="text" name="costoProduccion"><br>
+                Costo de Venta:<br>
+                <input type="text" name="CostoVenta"><br>
+                Colecci&oacute;n:<br>
+                <input type="text" name="nombrecoleccion"><br>
+                Empaque:<br>
+                <input type="text" name="nombreEmpaque"><br>
+            </form>
+            <form action=""
+            enctype="multipart/form-data" method="post"><br>
+            <p>
+                Seleccionar imagen del producto:<br>
+                <input type="file" name="datafile" size="40">
+            </p>
+
+        </form>
+        <br><br><input  type="submit" class="boton" value="Ingresar" style="width: 300px;"></input>
+    </div></center>
+
+</body>
+    
+</html>
