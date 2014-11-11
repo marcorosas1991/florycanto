@@ -71,7 +71,7 @@
 			mysql_close($link);
 			?>
 
-      <a href="agregarcoleccion.php"><div class="article grid_4">
+      <a href="crearcoleccion.php"><div class="article grid_4">
 				<h4><p>Agregar</p></h4>
 				<img src="images/add.png" alt="Event" />
 				<p>Hacer click para agregar <br>nueva colecci&oacute;n.</p>
