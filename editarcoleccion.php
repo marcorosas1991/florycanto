@@ -2,23 +2,18 @@
 
 session_start();
 
-<<<<<<< HEAD
 // if(empty($_SESSION['username'])) {
 // 	session_start();
 // 	$_SESSION['loginStatus'] = "necesitas identificarte!";
 // 	header("Location: login.php");
 // }
-=======
-if(empty($_SESSION['usuario'])) {
-	session_start();
-	$_SESSION['loginStatus'] = "necesitas identificarte!";
-	header("Location: login.php");
-}
->>>>>>> 24a7f0c731e46e0a4a89ec67420bc592fe9793f2
-
+$nombre = $_SESSION['nombre'];
+$descripcion = $_SESSION['descripcion'];
+$logo = $_SESSION['logo'];
+$estado = 0;
 if (isset($_POST['closeSession'])) {
 
-	session_unset();
+	session_unset(); 
 	session_destroy();
 	header("Location: index.php");
 	exit;
@@ -33,13 +28,8 @@ if (isset($_POST['submitColeccion'])) {
 	session_start();
 	$_SESSION['nombre'] = $nombre;
 	$_SESSION['descripcion'] = $descripcion;
-<<<<<<< HEAD
 	$_SESSION['file'] = $file; 
 	header("Location: index.html");
-=======
-	$_SESSION['logo'] = $logo;
-	header("Location: index.php");
->>>>>>> 24a7f0c731e46e0a4a89ec67420bc592fe9793f2
 
 	$link = mysql_connect("localhost", "root", "");
 	mysql_select_db("florycanto", $link);
@@ -77,7 +67,7 @@ if (isset($_POST['submitColeccion'])) {
 	      move_uploaded_file($_FILES["file"]["tmp_name"],
 	      "upload/" . $_FILES["file"]["name"]);
 	      echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-
+	      
 	      $imagen = "upload/" . $_FILES["file"]["name"];
 	    }
 	  }
@@ -111,35 +101,27 @@ if($_POST) {
   $nombre = trim($_POST['nombre']);
   $file = trim($_POST['file']);
   $descripcion = trim($_POST['descripcion']);
-
+  
   $errors = array();
-
+  
   // Validate the input
   if (strlen($nombre) == 0)
-<<<<<<< HEAD
     array_push($errors, "Por favor, ingresa el nombre del evento"); 
     
-=======
-    array_push($errors, "Por favor, ingresa el nombre del evento");
-
-  if (strlen($lugar) == 0)
-    array_push($errors, "Por favor, ingresa el lugar del evento");
-
->>>>>>> 24a7f0c731e46e0a4a89ec67420bc592fe9793f2
   if (strlen($descripcion) == 0)
     array_push($errors, "Por favor, ingresa una descripción del evento");
-
+    
   // Si no se encontraron errores
   if (count($errors) == 0) {
     array_push($errors, "No se encontraron Errores. Gracias!");
   }
-
+  
   // preparar erores para salida
   $output = '';
   foreach($errors as $val) {
     $output .= "<p class='output'>$val</p>";
   }
-
+  
 }
 
 ?>
@@ -148,45 +130,45 @@ if($_POST) {
 <html>
 
 	<head>
-		<title>Agregar Colecci&oacute;n</title>
+		<title>Editar Colecci&oacute;n</title>
 
 		<link type="text/css" rel="stylesheet" href="css/style2.css"/>
 		<style type="text/css">
    			#register-form label.error, .output {color:#ff3300;font-weight:bold;font-family:sans-serif}
   		</style>
-
+		
 		  <!-- Load jQuery and the validate plugin -->
 		  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 		  <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-
+		  
 		  <!-- jQuery Form Validation code -->
 		  <script>
-
+		  
 		  // When the browser is ready...
 		  $(function() {
-
+		  
 		    // Setup form validation on the #register-form element
 		    $("#register-form").validate({
-
+		    
 		        // Specify the validation rules
 		        rules: {
 		            nombre: "required",
 		            descripcion: "required",
 		        },
-
+		        
 		        // Specify the validation error messages
 		        messages: {
 		            nombre: "Por favor, ingresa el nombre de la colecci&oacute;n",
 		            descripcion: "Por favor, ingresa una descripci&oacute;n de la colecci&oacute;n",
 		        },
-
+		        
 		        submitHandler: function(form) {
 		            form.submit();
 		        }
 		    });
-
+		
 		  });
-
+		  
 		  </script>
 	</head>
 
@@ -199,7 +181,7 @@ if($_POST) {
 			<Form name ="closeSessionForm" Method ="POST" Action ="index.php">
 					<input type="submit" name="closeSession"class="botonCerrarSesion" value="Cerrar Sesi&oacute;n" style="width:120px; height:20px"/>
 			</form>
-
+			
 		</div>
 
 		<div class="textAlignLeft returnSection">
@@ -217,13 +199,13 @@ if($_POST) {
 			<form action="crearcoleccion.php" method="POST" id="register-form" novalidate="novalidate" enctype="multipart/form-data">
 				<div class="nombreEvento" style="padding-top:10px">
 					<div class="textoFormulario" style="float:left;">
-						Nombre:
+						Nombre:	
 					</div>
 					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
-						<input type="text" placeholder="nombre del evento" name="nombre"/>
+						<input type="text" placeholder=	<?php echo $_SESSION['nombre']?> name="nombre"/>
 					</div>
 				</div>
-
+	
 				<div class="descripcionEvento" style="padding-top:10px;">
 					<div class="textoFormulario" style="float:left;">
 						Descripci&oacute;n:
@@ -241,7 +223,7 @@ if($_POST) {
 						<input name="file" id="file" class="botonSubir" type="file" style="padding: 5px;width: 400px">
 					</div>
 				</div>
-
+	
 				<div class="contenedorBotonEnviar">
 					<div>
 						<input type="submit" name="submitColeccion" class="boton" value="Submit" style="width:200px"></input>
