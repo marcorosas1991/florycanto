@@ -40,7 +40,7 @@
                 <img src="http://i98.photobucket.com/albums/l273/Pompovaz/florycanto_zps017d7eb8.png"/>
         <div id="nav">
           <ul>
-            <li><a href=""> Inicio</a></li>
+            <li><a href="index.php"> Inicio</a></li>
             <li><a href="cerrarSesion.php" id="align_right"> Cerrar Sesi&oacute;n</a></li>
           </ul>
         </div>
