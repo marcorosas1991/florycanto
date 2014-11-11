@@ -52,6 +52,7 @@
       $link = mysql_connect("localhost", "root", "");
       mysql_select_db("florycanto", $link);
 
+      // seleccionar la coleccion
       $result = mysql_query("SELECT * FROM coleccion WHERE id=$claveColeccion", $link);
       $coleccion = mysql_fetch_array($result);
 
@@ -63,14 +64,16 @@
         <p>'.$descripcion.'</p>
       </div>';
 
-      $num_rows = mysql_num_rows($result);
+      //seleccionar los articulos
+      $resultarticulos = mysql_query("SELECT * FROM producto_pieza WHERE coleccionid=$claveColeccion", $link);
+      $num_rows = mysql_num_rows($resultarticulos);
 
-      while($row = mysql_fetch_array($result)){
+      while($row = mysql_fetch_array($resultarticulos)){
 
-        echo '<a href="vercoleccion.php?claveColeccion=' . $row['id'] . '"><div class="article grid_4">
-        <h4><p>' . $row['nombre'] .'</p></h4>
-        <img src="'.$row['logo'].'" alt="Event" /><br><br>
-        <a href="editarcoleccion.php?claveColeccion=' . $row['id'] . '"><img id="left_image" src="images/Edit.png"></a>
+        echo '<a href="verproducto.php?claveColeccion=' . $row['idProducto'] . '"><div class="article grid_4">
+        <h4><p>' . $row['idProducto'] .'</p></h4>
+        <img src="'.$row['imagen'].'" alt="Event" /><br><br>
+        <a href="editarproucto.php?claveColeccion=' . $row['idProducto'] . '"><img id="left_image" src="images/Edit.png"></a>
         </div></a>';
 
       }
@@ -78,10 +81,10 @@
       mysql_close($link);
       ?>
 
-      <a href="crearcoleccion.php"><div class="article grid_4">
+      <a href="crearproducto.php"><div class="article grid_4">
         <h4><p>Agregar</p></h4>
         <img src="images/add.png" alt="Event" />
-        <p>Hacer click para agregar <br>nueva colecci&oacute;n.</p>
+        <p>Hacer click para agregar un<br>nuevo producto.</p>
       </div></a>
 
 
