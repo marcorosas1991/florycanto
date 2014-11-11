@@ -18,7 +18,7 @@
     if($num_rows > 0){
       session_start();
       $_SESSION[usuario]="admin";
-      header('Location:index.html');
+      header('Location:index.php');
     }else{
       header('Location:login.php');
     }
