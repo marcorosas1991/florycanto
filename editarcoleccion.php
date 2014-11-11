@@ -7,10 +7,23 @@ session_start();
 // 	$_SESSION['loginStatus'] = "necesitas identificarte!";
 // 	header("Location: login.php");
 // }
-$nombre = $_SESSION['nombre'];
-$descripcion = $_SESSION['descripcion'];
-$logo = $_SESSION['logo'];
-$estado = 0;
+
+// $id = $_POST['id_coleccion';]
+// $nombre = $_SESSION['nombre'];
+// $descripcion = $_SESSION['descripcion'];
+// $logo = $_SESSION['logo'];
+
+$link = mysql_connect("localhost", "root", "");
+mysql_select_db("florycanto", $link);
+
+$query = "select coleccion from coleccion where id_coleccion='" . $id . "';";
+
+$coleccion = mysql_query($query, $link);
+
+$nombre = $coleccion['nombre'];
+$descripcion = $coleccion['descripcion'];
+$logo = $coleccion['logo'];
+
 if (isset($_POST['closeSession'])) {
 
 	session_unset(); 
@@ -30,9 +43,6 @@ if (isset($_POST['submitColeccion'])) {
 	$_SESSION['descripcion'] = $descripcion;
 	$_SESSION['file'] = $file; 
 	header("Location: index.html");
-
-	$link = mysql_connect("localhost", "root", "");
-	mysql_select_db("florycanto", $link);
 
 	$nombre = $_SESSION['nombre'];
 	$descripcion = $_SESSION['descripcion'];
@@ -76,10 +86,10 @@ if (isset($_POST['submitColeccion'])) {
 	}
 	//END FILE UPLOADER CODE
 
-	$result = mysql_query("INSERT INTO coleccion(nombre, descripcion, logo) VALUES ('" . $nombre . "','" . $descripcion . "','$file');", $link);
+	$result = mysql_query("UPDATE SET nombre = '" . $nombre . "', descripcion ='" . $descripcion . ", logo ='" . $logo . " WHERE '" . $coleccion . "','$file');", $link);
 
 	if($result){
-		echo "OK, coleccion registrada";
+		echo "OK, coleccion actualizada";
 	}else{
 		echo "Error";
 	}
@@ -132,7 +142,7 @@ if($_POST) {
 	<head>
 		<title>Editar Colecci&oacute;n</title>
 
-		<link type="text/css" rel="stylesheet" href="css/style2.css"/>
+		<link type="text/css" rel="stylesheet" href="css/960_12_col.css"/>
 		<style type="text/css">
    			#register-form label.error, .output {color:#ff3300;font-weight:bold;font-family:sans-serif}
   		</style>
@@ -188,7 +198,7 @@ if($_POST) {
 			<a href="index.php">
 				<h4 >Regresar</h4>
 			</a>
-			<h1 style="margin-top:-30px; padding-left: 50px"> Agregar Colecci&oacute;n:<h2>
+			<h1 style="margin-top:-30px; padding-left: 50px">Editar Colecci&oacute;n:<h2>
 		</div>
 
 		<div class="instrucciones">
@@ -202,7 +212,9 @@ if($_POST) {
 						Nombre:	
 					</div>
 					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
-						<input type="text" placeholder=	<?php echo $_SESSION['nombre']?> name="nombre"/>
+						<?php 
+							echo '<input type="text" placeholder="'. $nombre .'" name="nombre"/>'
+						?>
 					</div>
 				</div>
 	
@@ -211,7 +223,9 @@ if($_POST) {
 						Descripci&oacute;n:
 					</div>
 					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
-						<textarea maxlength="200" name="descripcion" placeholder ="Descripci&oacute;n del evento"></textarea>
+						<?php 
+							echo '<textarea maxlength="200" name="descripcion" placeholder = "'. $descripcion . '"></textarea>'
+						?>
 					</div>
 				</div>
 
