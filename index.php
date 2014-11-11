@@ -50,6 +50,27 @@
 			</div>
 
 
+			<?php
+			$link = mysql_connect("localhost", "root", "");
+			mysql_select_db("florycanto", $link);
+
+			$result = mysql_query("SELECT * FROM coleccion", $link);
+			$num_rows = mysql_num_rows($result);
+
+
+			while($row = mysql_fetch_array($result)){
+
+				echo '<a href=""><div class="article grid_4">
+					<h4><p>' . $row['nombre'] .'</p></h4>
+					<img src="images/mariposa.png" alt="Event" /><br><br>
+					<a href="editar.php"><img id="left_image" src="images/Edit.png"></a>
+				</div></a>'
+
+			}
+
+			mysql_close($link);
+			?>
+
 			<a href=""><div class="article grid_4">
 				<h4><p>Palma</p></h4>
 				<img src="images/cruz.png" alt="Event" /><br><br>
