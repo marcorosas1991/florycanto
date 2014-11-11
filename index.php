@@ -50,34 +50,32 @@
 			</div>
 
 
-			<a href=""><div class="article grid_4">
-				<h4><p>Palma</p></h4>
-				<img src="images/cruz.png" alt="Event" /><br><br>
-				<a href="editar.php"><img id="left_image" src="images/Edit.png"></a>
+			<?php
+			$link = mysql_connect("localhost", "root", "");
+			mysql_select_db("florycanto", $link);
 
-			</div></a>
+			$result = mysql_query("SELECT * FROM coleccion", $link);
+			$num_rows = mysql_num_rows($result);
 
-			<div class="article grid_4">
-				<h4><p>Mariposa</p></h4>
-				<img src="images/mariposa.png" alt="Event" />
-				<br>
-                <br>
-				<a href="editar.php"><img id="left_image" src="images/Edit.png"></a>
-			</div>
 
-			<div class="article grid_4">
-				<h4><p>Iconos</p></h4>
-				<img src="images/iconos.png" alt="Event" />
-				<br>
-                <br>
-				<a href="editar.php"><img id="left_image" src="images/Edit.png"></a>
-			</div>
+			while($row = mysql_fetch_array($result)){
 
-            <div class="article grid_4">
+				echo '<a href=""><div class="article grid_4">
+				<h4><p>' . $row['nombre'] .'</p></h4>
+				<img src="'.$row['logo'].'" alt="Event" /><br><br>
+				<a href="editarColeccion.php"><img id="left_image" src="images/Edit.png"></a>
+				</div></a>';
+
+			}
+
+			mysql_close($link);
+			?>
+
+      <a href="crearcoleccion.php"><div class="article grid_4">
 				<h4><p>Agregar</p></h4>
 				<img src="images/add.png" alt="Event" />
 				<p>Hacer click para agregar <br>nueva colecci&oacute;n.</p>
-			</div>
+			</div></a>
 
 
 			<div id="footer" class="grid_12">

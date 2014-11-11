@@ -11,14 +11,21 @@
     width: 25%;
     height: 30px;
     border: 0px;
-    background-color: #F5A9F2;
+    background-color: #7DB739;
     outline: 0;
 
     background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent),
                       linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent),
                       linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
-                      linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);    
+                      linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%); 
 }
+
+    
+.header{
+    font-color:#7DB739;
+    font-family: Monotype-cursiva;
+}  
+    
 </style>
 
 <html>
@@ -28,12 +35,12 @@
 
   <body>
     <center><img src="http://i98.photobucket.com/albums/l273/Pompovaz/florycanto_zps017d7eb8.png"/>
-    <h1> Ingreso al Sistema </h1>
+    <p class="header" style="color: #E12A83; font-family: Monotype corsiva; font-size: 30px;"> Ingreso al Sistema </p>
     <form action="validaUsuario.php" method="post">
-      <span>Usuario: <input type="text" name="user"> </span>
+      <span style="font-family: Monotype corsiva;">Usuario: <input type="text" name="user"> </span>
       <br>
       <br>
-      <span>Contrase&ntilde;a: <input type="password" name="password"> </span>
+      <span style="font-family: Monotype corsiva; font-color: #444444;">Contrase&ntilde;a: <input type="password" name="password"> </span>
       <br>
       <br>
       <input type="submit" value="Ingresar" class="boton">
