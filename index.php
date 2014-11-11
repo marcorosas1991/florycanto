@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+
+	session_start();
+	if (!isset($_SESSION['usuario'])) {
+		header('Location:login.html');
+	}
+
+?>
 
 <html>
 	<head>
@@ -22,7 +29,7 @@
 			li {
 				display: inline;
 				padding: 5px;}
-            
+
 		</style>
 	</head>
 
@@ -41,13 +48,13 @@
 			<div id="feature" class="grid_12">
 				<h3><p> Colecciones </p></h3>
 			</div>
-            
-            
+
+
 			<a href=""><div class="article grid_4">
 				<h4><p>Palma</p></h4>
 				<img src="images/cruz.png" alt="Event" /><br><br>
 				<a href="editar.php"><img id="left_image" src="images/Edit.png"></a>
-                
+
 			</div></a>
 
 			<div class="article grid_4">
@@ -65,7 +72,7 @@
                 <br>
 				<a href="editar.php"><img id="left_image" src="images/Edit.png"></a>
 			</div>
-    
+
             <div class="article grid_4">
 				<h4><p>Agregar</p></h4>
 				<img src="images/add.png" alt="Event" />
