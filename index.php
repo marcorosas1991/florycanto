@@ -36,19 +36,17 @@
 	<body>
 		<div class="container_12 clearfix">
 			<div id="header" class="grid_12">
-				<h1>Flor y Canto Joyeria</h1>
-                <img src="http://i98.photobucket.com/albums/l273/Pompovaz/florycanto_zps017d7eb8.png"/>
 				<div id="nav">
 					<ul>
 						<li><a href=""> Inicio</a></li>
 						<li><a href="cerrarSesion.php" id="align_right"> Cerrar Sesi&oacute;n</a></li>
 					</ul>
 				</div>
+                <img src="http://i98.photobucket.com/albums/l273/Pompovaz/florycanto_zps017d7eb8.png"/>
 			</div>
 			<div id="feature" class="grid_12">
 				<h3><p> Colecciones </p></h3>
 			</div>
-
 
 			<?php
 			$link = mysql_connect("localhost", "root", "");
