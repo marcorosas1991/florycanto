@@ -38,7 +38,7 @@
 			<div id="header" class="grid_12">
 				<div id="nav">
 					<ul>
-						<li><a href=""> Inicio</a></li>
+						<li><a href="index.php"> Inicio</a></li>
 						<li><a href="cerrarSesion.php" id="align_right"> Cerrar Sesi&oacute;n</a></li>
 					</ul>
 				</div>
