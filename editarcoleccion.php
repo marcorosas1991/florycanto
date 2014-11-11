@@ -1,17 +1,13 @@
 <?php
 
-session_start();
+	session_start();
+	if (!isset($_SESSION['usuario'])) {
+		header('Location:login.php');
+	}
 
-// if(empty($_SESSION['username'])) {
-// 	session_start();
-// 	$_SESSION['loginStatus'] = "necesitas identificarte!";
-// 	header("Location: login.php");
-// }
+?>
 
-// $id = $_POST['id_coleccion';]
-// $nombre = $_SESSION['nombre'];
-// $descripcion = $_SESSION['descripcion'];
-// $logo = $_SESSION['logo'];
+<?php
 
 $link = mysql_connect("localhost", "root", "");
 mysql_select_db("florycanto", $link);
