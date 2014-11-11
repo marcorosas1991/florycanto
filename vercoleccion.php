@@ -2,7 +2,7 @@
 
   session_start();
   if (!isset($_SESSION['usuario'])) {
-    header('Location:login.html');
+    header('Location:login.php');
   }
 
 ?>
@@ -24,7 +24,7 @@
         padding: 10px 0px 5px 0px;}
 
       #feature, .article {
-        height: 60px;}
+        height:150px;}
 
       li {
         display: inline;
@@ -70,10 +70,10 @@
 
       while($row = mysql_fetch_array($resultarticulos)){
 
-        echo '<a href="verproducto.php?claveColeccion=' . $row['idProducto'] . '"><div class="article grid_4">
+        echo '<a href="verproducto.php?claveProducto=' . $row['idProducto'] . '"><div class="article grid_4">
         <h4><p>' . $row['idProducto'] .'</p></h4>
         <img src="'.$row['imagen'].'" style="width: 174px; height: 143px;" /><br><br>
-        <a href="editarproucto.php?claveColeccion=' . $row['idProducto'] . '"><img id="left_image" src="images/Edit.png"></a>
+        <a href="editarproducto.php?claveProducto=' . $row['idProducto'] . '"><img id="left_image" src="images/Edit.png"></a>
         </div></a>';
 
       }

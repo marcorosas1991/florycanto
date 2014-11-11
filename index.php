@@ -42,6 +42,7 @@
 						<li><a href="cerrarSesion.php" id="align_right"> Cerrar Sesi&oacute;n</a></li>
 					</ul>
 				</div>
+				<br>
                 <img src="http://i98.photobucket.com/albums/l273/Pompovaz/florycanto_zps017d7eb8.png"/>
 			</div>
 			<div id="feature" class="grid_12">
