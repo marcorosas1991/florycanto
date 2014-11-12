@@ -72,7 +72,7 @@ if (isset($_POST['submitColeccion'])) {
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
-	
+
 	//END FILE UPLOADER CODE
 
 	if($result){
@@ -80,7 +80,7 @@ if (isset($_POST['submitColeccion'])) {
 	}else{
 		echo "Error";
 	}
-	
+
 	mysql_close($link);
 	header("Location: index.php");
 
@@ -200,14 +200,14 @@ if($_POST) {
 						<li><a href="login.php" id="align_right"> Cerrar Sesi&oacute;n</a></li>
 					</ul>
 				</div>
-        
+
 		<center><div id="feature" class="grid_12" style="height: 400px; padding-left: 28%; padding-right: 32%;";>
 			<br><br><h1 style="margin-top:-30px; padding-left: 50px">Editar Colecci&oacute;n:<h2>
 
-		
+
 			<h3>Llenar Datos:</h3>
 		<?php echo $output; ?>
-		
+
 			<form action="editarcoleccion.php" method="POST" id="register-form" novalidate="novalidate" enctype="multipart/form-data">
 				<div class="nombreEvento" style="padding-top:10px">
 					<div class="textoFormulario" >
@@ -226,7 +226,7 @@ if($_POST) {
 					</div>
 					<div class="campoDeTextoFormulario" style="width:500px;">
 						<?php
-							echo '<textarea maxlength="200" name="descripcion">'. $coleccion['descripcion'] . '</textarea>'
+							echo '<textarea style="height: 150px; width:400px" maxlength="200" name="descripcion">'. $coleccion['descripcion'] . '</textarea>'
 						?>
 					</div>
 				</div>
@@ -238,7 +238,7 @@ if($_POST) {
 					<div style="padding-top:0px">
 					<?php
 						echo '<input name="file" id="file" class="botonSubir" type="file" = "'. $coleccion['logo'] . '"style="padding: 5px;width: 400px">'
-						
+
 					?>
 					</div>
 				</div>
@@ -262,6 +262,6 @@ if($_POST) {
 	</body>
 
 	<footer>
-        
+
 	</footer>
 </html>
