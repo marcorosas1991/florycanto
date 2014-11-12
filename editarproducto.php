@@ -12,9 +12,9 @@ $link = mysql_connect("localhost", "root", "");
 mysql_select_db("florycanto", $link);
 
 if($_POST) {
-	$id = $_POST['idProducto'];
+	$id = $_POST['claveProducto'];
 } else {
-	$idProducto = $_GET['idProducto'];
+	$idProducto = $_GET['claveProducto'];
 	$query = "SELECT * FROM producto_pieza WHERE idProducto ='" . $idProducto . "';";
 	$result = mysql_query($query, $link);
 	$coleccion = mysql_fetch_array($result);

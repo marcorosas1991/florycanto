@@ -81,7 +81,7 @@
         <a href="verproducto.php?claveproducto=' . $producto['idProducto'] . '">
         <h4><p>' . $producto['idProducto'] .'</p></h4>
         <img src="'.$producto['imagen'].'" style="width: 274px; height: 183px;" /><br><br>
-        <a href="editarproducto.php?claveproducto=' . $producto['idProducto'] . '"><img id="left_image" src="images/Edit.png"></a>
+        <a href="editarproducto.php?claveProducto=' . $producto['idProducto'] . '"><img id="left_image" src="images/Edit.png"></a>
         </a>
 
         <h3><p> Producto:   '.$nombre.' </p></h3>
