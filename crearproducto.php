@@ -48,7 +48,7 @@
         </tr>
         <tr>
           <td>Descripci&oacute;n</td>
-          <td><input maxlength="50" type="text" name="descripcion"></td>
+          <td><textarea style="height: 150px; width:400px" maxlength="200" type="text" name="descripcion"></textarea></td>
         </tr>
         <tr>
           <td>Costo producci&oacute;n</td>

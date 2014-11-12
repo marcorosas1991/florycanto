@@ -58,7 +58,7 @@
     return $ext;
   }
 
-  $result = mysql_query("INSERT INTO producto_pieza(idProducto, coleccionid, categoria, tamano, cantidad, descripcion, costoProduccion, costoVenta, imagen, nombreEmpaque) VALUES ('" . $id . "','" . $coleccion . "','" . $categoria . "','" . $tamano . "','" . $cantidad . "','" . $descripcion . "','" . $costoP . "','" . $costoV . "','" . $newname . "','" . $empaque . "');", $link);
+  $result = mysql_query("INSERT INTO producto_pieza(idProducto, coleccionid, categoria, tamano, cantidad, descripcion, costoProduccion, costoVenta, imagen, nombreEmpaque) VALUES ('" . $id . "','" . $coleccion . "','" . $categoria . "','" . $tamano . "','" . $cantidad . "','" . $descripcion . "','" . $costop . "','" . $costov . "','" . $newname . "','" . $empaque . "');", $link);
 
   if ($result) {
     echo "Operacion correcta";
