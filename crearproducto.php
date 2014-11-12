@@ -23,7 +23,7 @@
   <h1>Agregar Producto</h1>
 
   <br>
-  <form action="insertarProducto.php" method="post" onSubmit="return validate(this)">
+  <form action="insertarProducto.php" method="post" enctype="multipart/form-data" onSubmit="return validate(this)">
     <table class="signup" border="0" cellpadding="2" cellspacing="15" bgcolor="#eeeeee">
       <tbody>
         <tr>
@@ -63,8 +63,14 @@
           <td><input maxlength="50" type="text" name="empaque"></td>
         </tr>
         <tr>
-          <td colspan="2"><input type="submit" value="Agregar Producto" /></td>
+          <td>Subir imagen</td>
+          <td><input class="botonSubir" type="file" accept=".png, .jpg" name="image"></td>
         </tr>
+
+        <tr>
+          <td colspan="2"><input name="Submit" type="submit" value="Agregar Producto" /></td>
+        </tr>
+
       </tbody>
     </table>
   </form>
