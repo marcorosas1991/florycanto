@@ -52,38 +52,35 @@ if (isset($_POST['submitColeccion'])) {
 	    $uploadOk = 0;
 	}
 	// Check file size
-	if ($_FILES["file"]["size"] > 500000) {
-	    echo "Sorry, your file is too large.";
-	    $uploadOk = 0;
-	}
+	// if ($_FILES["file"]["size"] > 500000) {
+	//     echo "Sorry, your file is too large.";
+	//     $uploadOk = 0;
+	// }
 	// Allow certain file formats
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-	&& $imageFileType != "gif" ) {
-	    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-	    $uploadOk = 0;
-	}
+	// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+	//     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+	//     $uploadOk = 0;
+	// }
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
 	    echo "Sorry, your file was not uploaded.";
+	    $result = mysql_query("UPDATE coleccion SET nombre = '".$nombre."', descripcion ='" . $descripcion . "' WHERE id ='".$id."'", $link);
 	// if everything is ok, try to upload file
-	} 
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+	} else if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+    	$result = mysql_query("UPDATE coleccion SET nombre = '".$nombre."', descripcion ='" . $descripcion . "', logo = '" . $target_file . "' WHERE id ='".$id."'", $link);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 	
 	//END FILE UPLOADER CODE
 
-	echo $id;
-	$result = mysql_query("UPDATE coleccion SET nombre = '".$nombre."', descripcion ='" . $descripcion . "', logo = '" . $target_file . "' WHERE id ='".$id."'", $link);
-
 	if($result){
 		echo "OK, coleccion actualizada";
 	}else{
 		echo "Error";
 	}
-
+	
 	mysql_close($link);
 	header("Location: index.php");
 
@@ -126,7 +123,6 @@ if($_POST) {
 }
 
 ?>
-
 
 <html>
 
@@ -253,7 +249,7 @@ if($_POST) {
 				</div>
 				<div class="contenedorBotonEnviar">
 					<div>
-						<br><br><input type="submit" name="submitColeccion" class="boton" value="Actualizar" style="width:200px"></input>
+						<br><input type="submit" name="submitColeccion" class="boton" value="Actualizar" style="width:200px"></input>
 					</div>
 				</div>
 					<?php
