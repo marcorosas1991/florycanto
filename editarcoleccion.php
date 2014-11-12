@@ -253,7 +253,7 @@ if($_POST) {
 				</div>
 				<div class="contenedorBotonEnviar">
 					<div>
-						<br><br><input type="submit" name="submitColeccion" class="boton" value="Actualizar" style="width:200px"></input>
+						<br><input type="submit" name="submitColeccion" class="boton" value="Actualizar" style="width:200px"></input>
 					</div>
 				</div>
 					<?php
