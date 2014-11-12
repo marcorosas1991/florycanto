@@ -127,6 +127,22 @@ if($_POST) {
 		<link type="text/css" rel="stylesheet" href="css/960_12_col.css"/>
 		<style type="text/css">
    			#register-form label.error, .output {color:#ff3300;font-weight:bold;font-family:sans-serif}
+            * {
+				font-family: Arial, Verdana, sans-serif;
+				color: #665544;
+				text-align: center;}
+
+			#nav, #feature, .article, #footer {
+				background-color: #efefef;
+				margin-top: 20px;
+				padding: 10px 0px 5px 0px;}
+
+			#feature, .article {
+				height: 60px;}
+
+			li {
+				display: inline;
+				padding: 5px;}
   		</style>
 		
 		  <!-- Load jQuery and the validate plugin -->
@@ -165,23 +181,16 @@ if($_POST) {
 	</head>
 
 	<body>
-
-
-		<div class="topBar">
-			<!-- <h4><?php echo $_SESSION['username']?></h4> -->
-
-			<Form name ="closeSessionForm" Method ="POST" Action ="index.php">
-					<input type="submit" name="closeSession"class="botonCerrarSesion" value="Cerrar Sesi&oacute;n" style="width:120px; height:20px"/>
-			</form>
-			
-		</div>
-
-		<div class="textAlignLeft returnSection">
-			<a href="index.php">
-				<h4 >Regresar</h4>
-			</a>
-			<h1 style="margin-top:-30px; padding-left: 50px"> Agregar Colecci&oacute;n:<h2>
-		</div>
+<img src="http://i98.photobucket.com/albums/l273/Pompovaz/florycanto_zps017d7eb8.png"/>
+        
+        <div id="nav">
+					<ul>
+						<li><a href="index.php"> Inicio</a></li>
+						<li><a href="login.php" id="align_right"> Cerrar Sesi&oacute;n</a></li>
+					</ul>
+				</div>
+    
+        <div id="footer" class="grid_12" style="padding-left: 28%; padding-right: 32%;"><h1 style="margin-top:10px;"> Agregar Colecci&oacute;n</h1>
 
 		<div class="instrucciones">
 			<h3>Llenar Datos:</h3>
@@ -189,47 +198,44 @@ if($_POST) {
 		<?php echo $output; ?>
 		<div class="formulario">
 			<form action="crearcoleccion.php" method="POST" id="register-form" novalidate="novalidate" enctype="multipart/form-data">
-				<div class="nombreEvento" style="padding-top:10px">
-					<div class="textoFormulario" style="float:left;">
-						Nombre:	
+				<div class="nombreEvento" style="padding-top:0px">
+					<div class="textoFormulario">Nombre:	
 					</div>
-					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
+					<div class="campoDeTextoFormulario" style="width:500px;">
 						<input type="text" placeholder="nombre del evento" name="nombre"/>
 					</div>
 				</div>
 	
 				<div class="descripcionEvento" style="padding-top:10px;">
-					<div class="textoFormulario" style="float:left;">
+					<div class="textoFormulario">
 						Descripci&oacute;n:
 					</div>
-					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
+					<div class="campoDeTextoFormulario" style="width:500px;">
 						<textarea maxlength="200" name="descripcion" placeholder ="Descripci&oacute;n del evento"></textarea>
 					</div>
 				</div>
 
 				<div class="imagenEvento" style="padding-top:10px">
-					<div class="textoFormulario" style="float:left">
+					<div class="textoFormulario">
 						Subir logo:
 					</div>
-					<div style="padding-top:25px">
+					<div>
 						<input name="file" id="file" class="botonSubir" type="file" style="padding: 5px;width: 400px">
 					</div>
 				</div>
 	
 				<div class="contenedorBotonEnviar">
 					<div>
-						<input type="submit" name="submitColeccion" class="boton" value="Submit" style="width:200px"></input>
+						<br><input type="submit" name="submitColeccion" class="boton" value="Terminar" style="width:200px"></input>
 					</div>
 				</div>
 			</form>
 		</div>
-
+    </div>
+        </center>
 	</body>
 
 	<footer>
 
-		<p>codeName:florycanto<br>
-			date: 10 de noviembre, 2014 <br>
-		</p>
 	</footer>
 </html>

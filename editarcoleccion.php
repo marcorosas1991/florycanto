@@ -205,7 +205,7 @@ if($_POST) {
 					</ul>
 				</div>
         
-		<center><div id="feature" class="grid_12" style="height: 400px; padding-left: 28%; padding-right: 33%;";>
+		<center><div id="feature" class="grid_12" style="height: 400px; padding-left: 28%; padding-right: 32%;";>
 			<br><br><h1 style="margin-top:-30px; padding-left: 50px">Editar Colecci&oacute;n:<h2>
 
 		
