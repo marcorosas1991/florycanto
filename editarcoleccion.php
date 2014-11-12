@@ -1,5 +1,4 @@
 <?php
-
 	session_start();
 	if (!isset($_SESSION['usuario'])) {
 		header('Location:login.php');
@@ -12,79 +11,37 @@
 $link = mysql_connect("localhost", "root", "");
 mysql_select_db("florycanto", $link);
 
-$claveColeccion = $_GET['claveColeccion'];
-
-$query = "SELECT * FROM coleccion WHERE id='" . $claveColeccion . "';";
-
-$coleccion = mysql_query($query, $link);
-
-$nombre = $coleccion['nombre'];
-$descripcion = $coleccion['descripcion'];
-$logo = $coleccion['logo'];
-
-if (isset($_POST['closeSession'])) {
-
-	session_unset();
-	session_destroy();
-	header("Location: index.php");
-	exit;
+if($_POST) {
+	$id = $_POST['id'];
+} else {
+	$claveColeccion = $_GET['claveColeccion'];
+	$query = "SELECT * FROM coleccion WHERE id =" . $claveColeccion . ";";
+	$result = mysql_query($query, $link);
+	$coleccion = mysql_fetch_array($result);
 }
 
+if (isset($_POST['eliminarColeccion'])) {
+	$sql = "DELETE FROM coleccion WHERE id ='" . $id . "'";
+	$result = mysql_query($sql, $link);
+	header("Location: index.php");
+
+	if($result){
+		echo "OK, coleccion actualizada";
+	}else{
+		echo "Error";
+	}
+}
 if (isset($_POST['submitColeccion'])) {
 
 	$nombre = $_POST['nombre'];
 	$descripcion = $_POST['descripcion'];
-	$file = $_POST['file'];
-
-	session_start();
-	$_SESSION['nombre'] = $nombre;
-	$_SESSION['descripcion'] = $descripcion;
-	$_SESSION['file'] = $file;
-	header("Location: index.html");
-
-	$nombre = $_SESSION['nombre'];
-	$descripcion = $_SESSION['descripcion'];
-	$imagen;
-	$file = $_SESSION['file'];
-	$estado = 0;
-
-
-	// FILE UPLOADER CODE
-	$allowedExts = array("gif", "jpeg", "jpg", "png");
-	$temp = explode(".", $_FILES["file"]["name"]);
-	$extension = end($temp);
-
-	if ((($_FILES["file"]["type"] == "image/gif")
-	|| ($_FILES["file"]["type"] == "image/jpeg")
-	|| ($_FILES["file"]["type"] == "image/jpg")
-	|| ($_FILES["file"]["type"] == "image/pjpeg")
-	|| ($_FILES["file"]["type"] == "image/x-png")
-	|| ($_FILES["file"]["type"] == "image/png"))
-	&& ($_FILES["file"]["size"] < 2000000)
-	&& in_array($extension, $allowedExts)) {
-	  if ($_FILES["file"]["error"] > 0) {
-	    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-	  } else {
-	    echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-	    echo "Type: " . $_FILES["file"]["type"] . "<br>";
-	    echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-	    echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
-	    if (file_exists("upload/" . $_FILES["file"]["name"])) {
-	      echo $_FILES["file"]["name"] . " already exists. ";
-	    } else {
-	      move_uploaded_file($_FILES["file"]["tmp_name"],
-	      "upload/" . $_FILES["file"]["name"]);
-	      echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-
-	      $imagen = "upload/" . $_FILES["file"]["name"];
-	    }
-	  }
-	} else {
-	  echo "Invalid file";
-	}
+	$target_dir = "images/";
+	$target_file = $target_dir . basename($_FILES["file"]["name"]);
+	
 	//END FILE UPLOADER CODE
 
-	$result = mysql_query("UPDATE SET nombre = '" . $nombre . "', descripcion ='" . $descripcion . ", logo ='" . $logo . " WHERE '" . $coleccion . "','$file');", $link);
+	echo $id;
+	$result = mysql_query("UPDATE coleccion SET nombre = '".$nombre."', descripcion ='" . $descripcion . "', logo = '" . $target_file . "' WHERE id ='".$id."'", $link);
 
 	if($result){
 		echo "OK, coleccion actualizada";
@@ -93,6 +50,8 @@ if (isset($_POST['submitColeccion'])) {
 	}
 
 	mysql_close($link);
+	header("Location: index.php");
+
 	exit;
 }
 
@@ -107,7 +66,6 @@ $output = '';
 if($_POST) {
   // collect all input and trim to remove leading and trailing whitespaces
   $nombre = trim($_POST['nombre']);
-  $file = trim($_POST['file']);
   $descripcion = trim($_POST['descripcion']);
 
   $errors = array();
@@ -194,7 +152,7 @@ if($_POST) {
 
 		<div class="textAlignLeft returnSection">
 			<a href="index.php">
-				<h4 >Regresar</h4>
+				<h4>Regresar</h4>
 			</a>
 			<h1 style="margin-top:-30px; padding-left: 50px">Editar Colecci&oacute;n:<h2>
 		</div>
@@ -204,14 +162,14 @@ if($_POST) {
 		</div>
 		<?php echo $output; ?>
 		<div class="formulario">
-			<form action="crearcoleccion.php" method="POST" id="register-form" novalidate="novalidate" enctype="multipart/form-data">
+			<form action="editarcoleccion.php" method="POST" id="register-form" novalidate="novalidate" enctype="multipart/form-data">
 				<div class="nombreEvento" style="padding-top:10px">
 					<div class="textoFormulario" style="float:left;">
 						Nombre:
 					</div>
 					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
 						<?php
-							echo '<input type="text" placeholder="" value= "" name="nombre"/>'
+							echo '<input type="text" placeholder="" value= "'. $coleccion['nombre'] . '" name="nombre"/>'
 						?>
 					</div>
 				</div>
@@ -222,7 +180,7 @@ if($_POST) {
 					</div>
 					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
 						<?php
-							echo '<textarea maxlength="200" name="descripcion" placeholder = "'. $descripcion . '"></textarea>'
+							echo '<textarea maxlength="200" name="descripcion">'. $coleccion['descripcion'] . '</textarea>'
 						?>
 					</div>
 				</div>
@@ -232,15 +190,25 @@ if($_POST) {
 						Subir logo:
 					</div>
 					<div style="padding-top:25px">
-						<input name="file" id="file" class="botonSubir" type="file" style="padding: 5px;width: 400px">
+					<?php
+						echo '<input name="file" id="file" class="botonSubir" type="file" = "'. $coleccion['logo'] . '"style="padding: 5px;width: 400px">'
+						
+					?>
 					</div>
 				</div>
-
+				<div class="contenedorBotonEliminar">
+					<div>
+						<input type="submit" name="eliminarColeccion" class="boton" value="Eliminar Coleccion" style="width:200px"></input>
+					</div>
+				</div>
 				<div class="contenedorBotonEnviar">
 					<div>
-						<input type="submit" name="submitColeccion" class="boton" value="Submit" style="width:200px"></input>
+						<input type="submit" name="submitColeccion" class="boton" value="Actualizar" style="width:200px"></input>
 					</div>
 				</div>
+					<?php
+						echo '<input type="hidden" value= "'. $claveColeccion . '" name="id"/>'
+					?>
 			</form>
 		</div>
 
