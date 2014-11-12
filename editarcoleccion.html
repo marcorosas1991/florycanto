@@ -100,7 +100,8 @@ if($_POST) {
 
 		<link type="text/css" rel="stylesheet" href="css/960_12_col.css"/>
 		<style type="text/css">
-   			#register-form label.error, .output {color:#ff3300;font-weight:bold;font-family:sans-serif}
+   			#register-form label.error, .output{
+                color:#ff3300;font-weight:bold;font-family:sans-serif}
             * {
 				font-family: Arial, Verdana, sans-serif;
 				color: #665544;
@@ -157,43 +158,55 @@ if($_POST) {
 
 	<body>
 
-        <img src="http://i98.photobucket.com/albums/l273/Pompovaz/florycanto_zps017d7eb8.png"/>
-		<div class="topBar">
-			<!-- <h4><?php echo $_SESSION['username']?></h4> -->
-			</form>
 
-		</div>
-        <div id="nav">
+		<!--<div class="topBar">-->
+			<!-- <h4><?php echo $_SESSION['username']?></h4> -->
+             <div id="header" class="grid_12">
+				<h1>Flor y Canto Joyeria</h1>
+                <img src="http://i98.photobucket.com/albums/l273/Pompovaz/florycanto_zps017d7eb8.png"/>
+				<div id="nav">
 					<ul>
-						<li><a href="index.php"> Inicio</a></li>
-						<li><a href="login.php" id="align_right"> Cerrar Sesi&oacute;n</a></li>
+						<li><a href=""> Inicio</a></li>
+						<li><a href="" id="align_right"> Cerrar Sesi&oacute;n</a></li>
 					</ul>
 				</div>
-        
-		<center><div id="feature" class="grid_12" style="height: 400px; padding-left: 28%; padding-right: 33%;";>
-			<br><br><h1 style="margin-top:-30px; padding-left: 50px">Editar Colecci&oacute;n:<h2>
+			</div>
 
-		
+			<Form name ="closeSessionForm" Method ="POST" Action ="index.php">
+					<input type="submit" name="closeSession"class="botonCerrarSesion" value="Cerrar Sesi&oacute;n" style="width:120px; height:20px"/>
+			</form>
+
+		<!--</div>-->
+
+		<!--<div class="textAlignLeft returnSection">
+			<a href="index.php">
+				<h4>Regresar</h4>
+			</a>
+			<h1 style="margin-top:-30px; padding-left: 50px">Editar Colecci&oacute;n:<h2>
+		</div>-->
+
+		<br><div class="instrucciones">
 			<h3>Llenar Datos:</h3>
+		</div>
 		<?php echo $output; ?>
-		
+		<div class="formulario">
 			<form action="editarcoleccion.php" method="POST" id="register-form" novalidate="novalidate" enctype="multipart/form-data">
 				<div class="nombreEvento" style="padding-top:10px">
-					<div class="textoFormulario" >
+					<div class="textoFormulario" style="float:left;">
 						Nombre:
 					</div>
-					<div class="campoDeTextoFormulario" style="width:500px;">
+					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
 						<?php
 							echo '<input type="text" placeholder="" value= "'. $coleccion['nombre'] . '" name="nombre"/>'
 						?>
-                        </div>
+					</div>
 				</div>
 
 				<div class="descripcionEvento" style="padding-top:10px;">
-					<div class="textoFormulario">
+					<div class="textoFormulario" style="float:left;">
 						Descripci&oacute;n:
 					</div>
-					<div class="campoDeTextoFormulario" style="width:500px;">
+					<div class="campoDeTextoFormulario" style="width:500px; padding-top:30px">
 						<?php
 							echo '<textarea maxlength="200" name="descripcion">'. $coleccion['descripcion'] . '</textarea>'
 						?>
@@ -201,10 +214,10 @@ if($_POST) {
 				</div>
 
 				<div class="imagenEvento" style="padding-top:10px">
-					<div class="textoFormulario">
+					<div class="textoFormulario" style="float:left">
 						Subir logo:
 					</div>
-					<div style="padding-top:0px">
+					<div style="padding-top:25px">
 					<?php
 						echo '<input name="file" id="file" class="botonSubir" type="file" = "'. $coleccion['logo'] . '"style="padding: 5px;width: 400px">'
 						
@@ -212,13 +225,13 @@ if($_POST) {
 					</div>
 				</div>
 				<div class="contenedorBotonEliminar">
-					<br><br><div>
-						<input type="submit" name="eliminarColeccion" class="boton" value="Eliminar Colecci&oacute;n" style="width:200px;"></input>
+					<div>
+						<input type="submit" name="eliminarColeccion" class="boton" value="Eliminar Coleccion" style="width:200px"></input>
 					</div>
 				</div>
 				<div class="contenedorBotonEnviar">
 					<div>
-						<br><br><input type="submit" name="submitColeccion" class="boton" value="Actualizar" style="width:200px"></input>
+						<input type="submit" name="submitColeccion" class="boton" value="Actualizar" style="width:200px"></input>
 					</div>
 				</div>
 					<?php
@@ -226,7 +239,6 @@ if($_POST) {
 					?>
 			</form>
 		</div>
-    </center>
 
 	</body>
 
